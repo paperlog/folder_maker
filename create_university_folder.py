@@ -17,8 +17,12 @@ if __name__ == "__main__":
     folder_list = []
     top_folder = "example"
     create_folder(top_folder, folder_type="top")
-    shutil.copy("deadline.py", top_folder)
-    print("deadline.pyをexample内に作成しました")
+    files = os.listdir('.')
+    for file in files:
+        if os.path.isfile(file):
+            if file=="deadline.py":
+                shutil.copy("deadline.py", top_folder)
+                print("deadline.pyをexample内に作成しました")
     while True:
         print(f"フォルダーリスト:{folder_list}")
         class_name = input("授業名を入力してください。入力を終了する際には[end]と入力してください: ")

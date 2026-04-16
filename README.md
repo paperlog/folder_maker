@@ -3,6 +3,7 @@
 
 
 大学の講義資料や課題を整理するためのフォルダーを一括生成するツールです。
+deadline.py(deadline.exe)は提出期限の管理を手助けするためのものです。ダウンロードしなくともcreate_university_folder.py(create_university_folder.exe)の動作に影響はありません。
 
 
 
@@ -75,6 +76,8 @@ example
 
  |- deadline.py (または deadline.exe)
 ```
+
+---
 
 ## 4. 提出期限確認ツール (deadline.py)
 
