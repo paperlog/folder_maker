@@ -1,7 +1,11 @@
 import os
 
 def get_folder_names(target_dir):
-    return [name for name in os.listdir(target_dir) if os.path.isdir(os.path.join(target_dir, name))]
+    try:
+        return [name for name in os.listdir(target_dir) if os.path.isdir(os.path.join(target_dir, name))]
+    except FileNotFoundError:
+        print(f"create_university_folderによって作られたフォルダ内に配置してください。")
+        return []
 
 text_file_name = "deadline.txt"
 
@@ -21,8 +25,11 @@ for folder_a in folders_a:
 deadlines = {}
 for folder_a, folder_b_list in folders_b.items():
     for folder_b in folder_b_list:
-        with open(os.path.join(folder_a, "未提出", folder_b, text_file_name), "r", encoding="utf-8") as f:
-            deadlines[(folder_a, folder_b)] = f.read().strip()
+        try:
+            with open(os.path.join(folder_a, "未提出", folder_b, text_file_name), "r", encoding="utf-8") as f:
+                deadlines[(folder_a, folder_b)] = f.read().strip()
+        except FileNotFoundError:
+            deadlines[(folder_a, folder_b)] = "deadline.txtが見つかりませんでした。"
 
 if deadlines=={}:
     print("現在、未提出の課題はありません。")
